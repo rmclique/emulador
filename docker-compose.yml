@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  emulatorjs:
+    build: .
+    container_name: emulatorjs-docker
+    platform: linux/arm64  # Especificar plataforma ARM64
+    ports:
+      - "3000:80"
+    volumes:
+      # Persistir ROMs
+      - ./roms:/app/roms
+      # Persistir saves
+      - ./saves:/app/saves
+      # Persistir screenshots
+      - ./screenshots:/app/screenshots
+      # Volume para dados do EmulatorJS
+      - emulatorjs_data:/app/emulatorjs/data
+    environment:
+      - NODE_ENV=production
+      - PLATFORM=arm64
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  emulatorjs_data:
+    driver: local

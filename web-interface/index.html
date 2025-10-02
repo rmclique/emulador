@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmulatorJS Docker Interface</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">
+                <i class="fas fa-gamepad me-2"></i>EmulatorJS Docker
+            </span>
+            <div class="d-flex">
+                <button class="btn btn-outline-light me-2" onclick="showUploadModal()">
+                    <i class="fas fa-upload me-1"></i>Upload ROM
+                </button>
+                <button class="btn btn-outline-light" onclick="refreshRoms()">
+                    <i class="fas fa-sync-alt me-1"></i>Atualizar
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Sidebar com sistemas -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5><i class="fas fa-list me-2"></i>Sistemas</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush" id="systemsList">
+                            <!-- Sistemas serão carregados aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área principal -->
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 id="currentSystem">Selecione um sistema</h5>
+                        <div id="systemActions" style="display: none;">
+                            <button class="btn btn-sm btn-primary" onclick="showUploadModal()">
+                                <i class="fas fa-plus me-1"></i>Adicionar ROM
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="romsContainer">
+                            <div class="text-center text-muted">
+                                <i class="fas fa-folder-open fa-3x mb-3"></i>
+                                <p>Selecione um sistema para ver as ROMs disponíveis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Upload -->
+    <div class="modal fade" id="uploadModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload de ROM</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="systemSelect" class="form-label">Sistema</label>
+                            <select class="form-select" id="systemSelect" name="system" required>
+                                <option value="">Selecione um sistema</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="romFile" class="form-label">Arquivo ROM</label>
+                            <input type="file" class="form-control" id="romFile" name="rom" required>
+                            <div class="form-text">Formatos suportados: .zip, .7z, .gba, .nes, .snes, .gb, .gbc, .n64, .iso, .cue, .bin</div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="uploadRom()">
+                        <i class="fas fa-upload me-1"></i>Upload
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Exclusão -->
+    <div class="modal fade" id="deleteModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar Exclusão</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Tem certeza que deseja excluir esta ROM?</p>
+                    <p class="text-muted" id="deleteFileName"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete()">
+                        <i class="fas fa-trash me-1"></i>Excluir
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
