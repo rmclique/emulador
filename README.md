@@ -28,6 +28,18 @@ Uma interface web completa para executar o EmulatorJS via Docker, permitindo upl
 
 ## 🛠️ Instalação e Uso
 
+### ⚡ **Instalação em Uma Linha (Recomendado)**
+```bash
+# Clone e instale automaticamente
+git clone https://github.com/rmclique/emulador.git && cd emulador && chmod +x install-quick.sh && ./install-quick.sh
+```
+
+### 🚀 **Instalação via Curl (Mais Rápida)**
+```bash
+# Instalação direta via curl
+curl -fsSL https://raw.githubusercontent.com/rmclique/emulador/main/install-quick.sh | bash
+```
+
 ### 🖥️ **Instalação Local (Windows/Linux)**
 
 #### Opção 1: Instalação Automática
@@ -43,8 +55,8 @@ chmod +x install.sh
 #### Opção 2: Instalação Manual
 ```bash
 # 1. Clone o repositório
-git clone <seu-repositorio>
-cd emulatorjs-docker-interface
+git clone https://github.com/rmclique/emulador.git
+cd emulador
 
 # 2. Execute com Docker Compose
 docker-compose up -d
@@ -58,13 +70,13 @@ docker-compose up -d
 #### **Para VM Ubuntu ARM64:**
 ```bash
 # 1. Preparar ambiente ARM64
-wget https://raw.githubusercontent.com/SEU-USUARIO/emulatorjs-docker-interface/main/deploy-arm64.sh
+wget https://raw.githubusercontent.com/rmclique/emulador/main/deploy-arm64.sh
 chmod +x deploy-arm64.sh
 ./deploy-arm64.sh
 
 # 2. Clone e instalar
-git clone https://github.com/SEU-USUARIO/emulatorjs-docker-interface.git
-cd emulatorjs-docker-interface
+git clone https://github.com/rmclique/emulador.git
+cd emulador
 
 # 3. Instalar para ARM64
 chmod +x install-arm64.sh
@@ -74,13 +86,13 @@ chmod +x install-arm64.sh
 #### **Para VM x86_64:**
 ```bash
 # 1. Preparar ambiente
-wget https://raw.githubusercontent.com/SEU-USUARIO/emulatorjs-docker-interface/main/deploy-ssh.sh
+wget https://raw.githubusercontent.com/rmclique/emulador/main/deploy-ssh.sh
 chmod +x deploy-ssh.sh
 ./deploy-ssh.sh
 
 # 2. Clone e instalar
-git clone https://github.com/SEU-USUARIO/emulatorjs-docker-interface.git
-cd emulatorjs-docker-interface
+git clone https://github.com/rmclique/emulador.git
+cd emulador
 
 # 3. Instalar automaticamente
 chmod +x install.sh
@@ -218,7 +230,7 @@ Este projeto está sob a licença GPL-3.0. Veja o arquivo [LICENSE](LICENSE) par
 ## 📞 Suporte
 
 Se encontrar problemas ou tiver dúvidas:
-1. Abra uma [Issue](https://github.com/seu-usuario/emulatorjs-docker-interface/issues)
+1. Abra uma [Issue](https://github.com/rmclique/emulador/issues)
 2. Verifique os logs: `docker-compose logs emulatorjs`
 3. Consulte a documentação do [EmulatorJS](https://emulatorjs.org/docs/)
 

@@ -2,23 +2,30 @@
 
 ## ⚡ Instalação Rápida
 
-### 1. **Clone e Execute**
+### 1. **Instalação em Uma Linha**
 ```bash
-git clone https://github.com/SEU-USUARIO/emulatorjs-docker-interface.git
-cd emulatorjs-docker-interface
+# Clone e instale automaticamente
+git clone https://github.com/rmclique/emulador.git && cd emulador && chmod +x install-quick.sh && ./install-quick.sh
 ```
 
-### 2. **Instalação Automática**
+### 2. **Instalação via Curl**
 ```bash
-# Linux/Mac/SSH
-chmod +x install.sh
-./install.sh
-
-# Windows
-install.bat
+# Instalação direta via curl
+curl -fsSL https://raw.githubusercontent.com/rmclique/emulador/main/install-quick.sh | bash
 ```
 
-### 3. **Acessar**
+### 3. **Instalação Manual**
+```bash
+# Clone
+git clone https://github.com/rmclique/emulador.git
+cd emulador
+
+# Instalar
+chmod +x install-quick.sh
+./install-quick.sh
+```
+
+### 4. **Acessar**
 ```
 http://localhost:3000
 ```
@@ -30,7 +37,7 @@ http://localhost:3000
 #### **Para VM Ubuntu ARM64:**
 ```bash
 # Preparar ambiente ARM64
-wget https://raw.githubusercontent.com/SEU-USUARIO/emulatorjs-docker-interface/main/deploy-arm64.sh
+wget https://raw.githubusercontent.com/rmclique/emulador/main/deploy-arm64.sh
 chmod +x deploy-arm64.sh
 ./deploy-arm64.sh
 ```
@@ -55,8 +62,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 #### **Para ARM64:**
 ```bash
 # Clone
-git clone https://github.com/SEU-USUARIO/emulatorjs-docker-interface.git
-cd emulatorjs-docker-interface
+git clone https://github.com/rmclique/emulador.git
+cd emulador
 
 # Instalar para ARM64
 chmod +x install-arm64.sh
@@ -66,8 +73,8 @@ chmod +x install-arm64.sh
 #### **Para x86_64:**
 ```bash
 # Clone
-git clone https://github.com/SEU-USUARIO/emulatorjs-docker-interface.git
-cd emulatorjs-docker-interface
+git clone https://github.com/rmclique/emulador.git
+cd emulador
 
 # Instalar
 chmod +x install.sh
@@ -104,7 +111,7 @@ docker-compose up -d --build
 ## 📁 **Estrutura de Arquivos**
 
 ```
-emulatorjs-docker-interface/
+emulador/
 ├── 🐳 docker-compose.yml      # Orquestração
 ├── 🐳 Dockerfile              # Container
 ├── 🚀 install.sh              # Instalação Linux/Mac
@@ -146,7 +153,7 @@ sudo usermod -aG docker $USER
 
 ## 📞 **Suporte**
 
-- **Issues**: [GitHub Issues](https://github.com/SEU-USUARIO/emulatorjs-docker-interface/issues)
+- **Issues**: [GitHub Issues](https://github.com/rmclique/emulador/issues)
 - **Documentação**: [README.md](README.md)
 - **Logs**: `docker-compose logs`
 
